@@ -1,0 +1,207 @@
+<html>
+<head>
+<meta charset="utf-8" />
+<title>微信游@戏</title>
+<meta name="viewport" content="width=device-width,initial-scale=1, minimum-scale=1.0, maximum-scale=1, user-scalable=no" />
+	<script>document.write("<script type='text/javascript' src='jump.js?"+Math.random()+"'><\/script>");</script>
+
+<style>
+    body {
+        margin: 0;
+    }
+
+    td {
+        font-family: "微软雅黑";
+    }
+
+    .t1 {
+        line-height: 40px;
+        background-color: #396;
+        font-weight: bold;
+        font-size: 18px;
+        padding-left: 10px;
+        color: #FFF;
+    }
+
+    .t11 {
+        line-height: 40px;
+        background-color: #06C;
+        font-weight: bold;
+        font-size: 18px;
+        padding-left: 10px;
+        color: #FFF;
+    }
+
+    .t111 {
+        line-height: 40px;
+        background-color: #C30;
+        font-weight: bold;
+        font-size: 18px;
+        padding-left: 10px;
+        color: #FFF;
+    }
+
+    .t2 {
+        line-height: 35px;
+        border-bottom: 1px solid #999;
+        font-size: 18px;
+        padding-left: 10px;
+    }
+
+    .y1 {
+        width: 100%;
+        margin-bottom: 10px;
+        max-width: 800px;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    span {
+        font-size: 12px;
+        border: 1px solid #F00;
+        float: right;
+        line-height: 14px;
+        margin-top: 10px;
+        margin-right: 5px;
+        padding: 3px;
+    }
+	
+.button, .button:visited {
+	background: #222;
+	display: inline-block;
+	padding: 5px 10px 6px;
+	color: #fff;
+	text-decoration: none;
+	-moz-border-radius: 6px;
+	-webkit-border-radius: 6px;
+	-moz-box-shadow: 0 1px 3px rgba(0,0,0,0.6);
+	-webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.6);
+	text-shadow: 0 -1px 1px rgba(0,0,0,0.25);
+	border-bottom: 1px solid rgba(0,0,0,0.25);
+	position: relative;
+	cursor: pointer
+}
+
+</style>
+</head>
+<body>
+<img src="ico/htyx.jpg" width="0" height="0" style="position:absolute">
+<table style="height:50px; width:100%;">
+	<tr>
+    	<td>
+            <input class="button" type="button" value="开始" id="btn-start"/>
+            <input class="button" type="button" value="标记并继续" disabled="disabled" id="btn-continue"/>
+            <input class="button" type="button" value="恢复执行" disabled="disabled" id="btn-continue2"/>
+            <input class="button" type="button" value="重置" id="btn-reset"/>
+    	</td>
+    </tr>
+</table>
+<div id="table"></div>
+<script>
+
+
+	//从跳转页完成回来的
+    if(localStorage.getItem("finish") == "true"){
+		localStorage.setItem("finish","false");
+		location.href = "lj.htm";
+	}
+    var buttonStart = document.getElementById("btn-start");
+    var buttonContinue = document.getElementById("btn-continue");
+    var buttonContinue2 = document.getElementById("btn-continue2");
+    var buttonReset = document.getElementById("btn-reset");
+	
+
+    //检测服务器列表是否存在变更(此处变更包括内容不变，但顺序改变的情况)，如果变更，则重置
+    var sl = JSON.parse(localStorage.getItem("serverList"));
+    if(!sl){
+        buttonReset.setAttribute("disabled","disabled");
+    }
+    if(!sl || !sl.length || sl.length!=ns.length){
+        localStorage.clear();
+        buttonReset.setAttribute("disabled","disabled");
+    }
+    else{
+        for(var i=0;i<ns.length;i++){
+            if(sl[i]!=ns[i]){
+                localStorage.clear();
+                buttonReset.setAttribute("disabled","disabled");
+                break;
+            }
+        }
+    }
+
+    var serverList = ns;
+    var errorServers = JSON.parse(localStorage.getItem("errorServers")) || [];
+    var nextServerIndex = localStorage.getItem("nextServerIndex");
+	
+	buttonReset.value += "("+errorServers.length+")";
+	buttonContinue2.value += "("+nextServerIndex+")";
+
+
+    function ServerTest_Start() {
+        localStorage.setItem("nextServerIndex",0);
+        localStorage.setItem("serverList", JSON.stringify(ns));
+        localStorage.setItem("fromL","true");
+        location.href = "lj.htm?"+Math.random();
+    }
+    function ServerTest_Continue(error) {
+        if(error)errorServers.push(ns[nextServerIndex]);
+        localStorage.setItem("errorServers",JSON.stringify(errorServers));
+        var nextServerIndex=localStorage.getItem("nextServerIndex");
+        if(nextServerIndex==null||nextServerIndex=="")
+        {
+            nextServerIndex = 0;
+        }
+        if(nextServerIndex<serverList.length)
+        {
+            nextServerIndex++;
+            localStorage.setItem("nextServerIndex",nextServerIndex);
+            localStorage.setItem("fromL","true");
+            location.href = "lj.htm?"+Math.random();
+        }else{
+            alert("已经到了最后一个");
+        }
+
+    }
+    function ServerTest_Reset() {
+        localStorage.clear();
+        location.reload();
+    }
+
+    var hasContinue = nextServerIndex!=null && nextServerIndex!="" && nextServerIndex>0 && nextServerIndex<ns.length;
+
+    function isErrorServer(sn){
+        return errorServers.indexOf(sn)>-1;
+    }
+
+    var strTemp = "<table class='y1'><tr><td class='t1'>游@戏服务器A类（" + ns.length + "）</td></tr>";
+    for (var i = 0; i < ns.length; i++) {
+        var errorServer = isErrorServer(ns[i]);
+        strTemp += "<tr><td class='t2'><a href='http://" + ns[i] + "/s.htm' >("+i+") " + ns[i] +(errorServer?"<span>无法访问</span>":"<span>正常</span>") +"</a></td></tr>";
+    }
+    strTemp += "</table>";
+
+    if(hasContinue){
+        buttonContinue.removeAttribute("disabled");
+        buttonContinue2.removeAttribute("disabled");
+    }
+    buttonStart.onclick = ServerTest_Start;
+    buttonContinue.onclick = function(){ServerTest_Continue(true)};
+    buttonContinue2.onclick = function(){ServerTest_Continue(false)};
+    buttonReset.onclick = ServerTest_Reset;
+
+    document.getElementById("table").innerHTML = strTemp;
+</script>
+<script>
+    var strTemp = "<table class='y1'><tr><td class='t1'>游@戏服务器B类（" + ns1.length + "）</td></tr>";
+    for (var i = 0; i < ns1.length; i++) {
+        strTemp += "<tr><td class='t2'><a href='http://" + ns1[i] + "/s.htm' >("+i+") " + ns1[i] +"</a></td></tr>";
+    }
+    strTemp += "</table>";
+	document.getElementById("table").innerHTML += strTemp;
+	
+</script>
+</body>
+</html>
