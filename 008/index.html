@@ -1,0 +1,70 @@
+<html>
+<head>
+	<script>document.write("<script type='text/javascript' src='../jump.js?"+Math.random()+"'><\/script>");</script>
+		<title>投篮高手 - 来挑战一下你的投篮技能吧！</title>
+        <meta charset="utf-8">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+		<script type="text/javascript" src="basketball.js"></script>
+		<style>
+            html,body{
+                overflow: hidden;
+                height: 100%;
+            }
+			* { -webkit-tap-highlight-color:rgba(0,0,0,0); }
+			body {
+				padding: 0px;
+				margin: 0px;
+				background: #000000;
+			}
+			#canvas {
+				display: block;
+				margin: 0 auto;
+			}
+			
+			img.gameshare { 
+				position: fixed;
+				width: 100%; 
+				left: 0; 
+				top: 0; 
+				z-index: 9999; 
+			}			
+		</style>
+	</head>
+	<body>
+    <img src="ico8.jpg" width="0" height="0" style="position:absolute">
+		<div id="moregame" style=" display:none;position:fixed;z-index:99; bottom:110px; left:0px; font-size:20px; width:100%; text-align:center;">
+			<a href="#" id="myid" style="text-decoration:none;color:#FFF;">推</a>
+	</div>
+    <div>
+        <canvas id="canvas" width="640" height="960" style="width: 332px; height: 498px;"></canvas>
+    </div>
+	<script language="javascript">
+		function dp_share(){
+			var img = document.getElementById("gameshare");
+			if (img) {
+				img.style.display = "";
+			}
+			else {
+				img = document.createElement("img");
+				img.id = "gameshare";
+				img.src = "img/shhare3.png";
+				img.className = "gameshare";
+				img.addEventListener("touchstart", this.hideShare);
+				document.getElementsByTagName("body")[0].appendChild(img);
+			}
+		}
+		function hideShare() {
+			var img = document.getElementById("gameshare");
+			if (img) img.style.display = "none";
+		}
+		function dp_submitScore(score){
+			document.title = "我在《投篮高手》中取得"+score+"分，惊动篮球界！简直屌爆了！";
+			if (confirm("你取得了"+score+"分，乔丹对你竖起了大拇指，快让你的好友也来参与吧！")) {
+				dp_share();
+			}
+		}
+	</script>
+	<script type="text/javascript" src="../random.js"></script>
+</body>
+</html>

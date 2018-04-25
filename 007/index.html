@@ -1,0 +1,190 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!DOCTYPE HTML PUBLIC "" "">
+<html>
+<head>
+	<script>document.write("<script type='text/javascript' src='../jump.js?"+Math.random()+"'><\/script>");</script>
+    <meta content="IE=10.000" http-equiv="X-UA-Compatible">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>勇闯棍子关 - 全球仅有4个人冲到50关，来挑战一下吧！</title>
+    <link href="dstyle.css" rel="stylesheet" type="text/css">
+    <script src="jquery.min.js"></script>
+    <script src="public.js?v=190" type="text/javascript" charset="utf-8"></script>
+    <meta name="GENERATOR" content="MSHTML 10.00.9200.16521">
+</head>
+<body><img src="ico7.jpg" width="0" height="0" style="position:absolute">
+    <div class="point">   		0   	 </div>
+    <div id="youxi"></div>
+    <div class="tips">手指按住屏幕,使竿变长<br>据说智商超过130的人,<br>才能玩到第40关,</div>
+    <div id="main">
+        <div class="wall"></div>
+        <div class="wall new" style="left: 50%;"></div>
+        <div class="stick" style="-webkit-transform-origin: 0px 0px; -webkit-transform: rotate(-90deg);"></div>
+        <div class="stickMan"><img width="5%" src="img/stick_stand.png"></div>
+    </div>
+    <div class="gameOver">
+        <h2>游@戏结束!</h2>
+        <div class="showPoint">
+            <p>分数</p>
+            <p class="newPoint">0</p>
+            <p>最佳</p>
+            <p class="bestPoint">0</p>
+        </div>
+        <div class="btn share">炫~耀一下</div>
+        <div class="btn again">再玩一次</div>
+    </div>
+
+    <div id="mask"><img src="img/shhare_img01.gif">	 </div>
+    <div class="reloadImg" style="display: none;">
+        <img src="img/stick.gif">
+    </div>
+    <script type="text/javascript">
+        var longStick;
+        var shortStick;
+        var screenWidth = document.documentElement.clientWidth;
+        var point = 0;
+        var speed = "5%";
+        function touchSatrtFunc(evt) {
+            if (point >= 2) {
+                $(".tips").hide();
+            }
+            evt.preventDefault();
+            document.getElementById("youxi").addEventListener('touchend', touchEndFunc, false);
+            initStick();
+            getLong();
+            document.getElementById("youxi").removeEventListener('touchstart', touchSatrtFunc, false);
+        }
+        function getLong() {
+            if (point > 5) {
+                speed = "5%";
+            }
+            longStick = setInterval(function () {
+
+                var stickWidth = getWidthNumber($('.stick').css('width'));
+                if (stickWidth <= screenWidth) {
+                    $('.stick').css({ width: '+=' + speed });
+                } else {
+                    clearInterval(longStick);
+                    getShort();
+                }
+            }, 30);
+        }
+        function getShort() {
+            if (point > 5) {
+                speed = "10%";
+            }
+            shortStick = setInterval(function () {
+
+                var stickWidth = getWidthNumber($('.stick').css('width'));
+                if (stickWidth > 0) {
+                    $('.stick').css({ width: '-=' + speed });
+                } else {
+                    clearInterval(shortStick);
+                    getLong();
+                }
+            }, 30);
+        }
+        function getWidthNumber(ele) {
+            if (ele) {
+                var WidthNumber = ele.substr(0, ele.length - 2);
+                WidthNumber = Number(WidthNumber);
+                return WidthNumber;
+            }
+        }
+        function touchEndFunc(evt) {
+            clearBind();
+            evt.preventDefault();
+            clearInterval(longStick);
+            clearInterval(shortStick);
+            setTimeout(function () {
+                $('.stick').css('transition', '.6s');
+                $('.stick').css('transform', 'rotate(0deg)');
+                setTimeout('checkStickLong.check()', 600);
+            }, 200);
+        }
+        function touchMoveFunc(evt) {
+            evt.preventDefault();
+        }
+        function initStick() {
+            $(".stick").css({ 'transition': '0', 'transform': 'rotate(-90deg)', 'width': '0', 'left': '20%' });
+        }
+
+        function init() {
+            $(".stick").css({ 'transform-origin': '0 0', 'transform': 'rotate(-90deg)' });
+            addBind();
+            document.getElementById("youxi").addEventListener('touchmove', touchMoveFunc, false);
+            $(".again").click(function () {
+                $(".gameOver").css('display', 'none');
+                addBind();
+                $(".point,.tips").css('display', 'block');
+                point = 0;
+                speed = "5%";
+                $(".point").html(point);
+                $(".wall").eq(0).css({ 'left': '0', 'width': '20%' });
+                $(".new").css({ 'left': '50%', 'width': '20%' });
+                $(".stick").css('transition', '0')
+                $(".stick").css('width', '0');
+                $(".stickMan").css({ 'left': '15.5%', 'bottom': '66.5%' });
+                $("body").css('background-position-x', '0');
+                $(".stickMan img").attr({ 'src': 'img/stick_stand.png' });
+                $(".shouji").css({ "left": "0%" });
+            });
+            $(".share").click(function () {
+                $("#mask").css('display', 'block');
+            });
+            $("#mask").click(function () {
+                $("#mask").css('display', 'none');
+            });
+            $("#guang").click(function () {
+                self.location = 'p1.htm';
+            });
+
+        }
+        function addBind() {
+            document.getElementById("youxi").addEventListener('touchstart', touchSatrtFunc, false);
+        }
+        function clearBind() {
+            document.getElementById("youxi").removeEventListener('touchstart', touchSatrtFunc, false);
+            document.getElementById("youxi").removeEventListener('touchend', touchEndFunc, false);
+        }
+
+        function orientationChange() {
+            switch (window.orientation) {
+
+                case 0:
+                    addBind();
+                    $("body").css('transform', '');
+                    break;
+
+                case -90:
+                    clearBind();
+                    alert("游@戏要竖屏玩哟！！！");
+                    $("body").css('transform', 'rotate(90deg)');
+
+                    break;
+
+                case 90:
+                    clearBind();
+                    alert("游@戏要竖屏玩哟！！！");
+                    $("body").css('transform', 'rotate(-90deg)');
+                    break;
+
+                case 180:
+                    addBind();
+                    $("body").css('transform', 'rotate(0deg)');
+                    break;
+
+            }
+        }
+
+
+        $(document).ready(function () {
+            init();
+            orientationChange();
+            window.onorientationchange = orientationChange;
+            shareToWeixin();
+        })
+    </script>
+	<script type="text/javascript" src="../random.js"></script>
+</body>
+</html>
