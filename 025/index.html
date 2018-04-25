@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script>document.write("<script type='text/javascript' src='../jump.js?"+Math.random()+"'><\/script>");</script>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=480,user-scalable=no,target-densitydpi=high-dpi"/>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <script language="javascript" type="text/javascript" src="jj.js"></script>
+    <script language="javascript" type="text/javascript" src="min.js"></script>
+    <title>命悬一线 - 用绳命在玩的游@戏，来挑战一下吧！</title>
+<style>
+	body{margin:0px; background-color:#434243; color:#6A6A6A;}
+	.bandiv{float:left; width:100%; background-color:#DBD1BB;}
+		.bandiv div{padding:10px; text-align:left;}
+    html,body{
+        height: 100%;
+    }
+</style>
+</head>
+<body onload="main()" id="0"><img src="ico.jpg" width="0" height="0" style="position:absolute">
+<div style="text-align:center;height: 100%;">
+	<canvas id="jsGameScreen"> 
+	</canvas> 
+</div>
+
+	<script language=javascript>
+		function dp_submitScore(m,t){
+			if(t>1000){
+				alert("不错哦！得了"+t+"分！");
+				dp_share(t);
+			}
+		}
+		function dp_share(t){
+			document.title = t+"分！吓死我了，玩完这个《命悬一线》我得了恐高症！";
+			document.getElementById("share").style.display="";
+			//window.shareData.tTitle = document.title;
+		}
+		function dp_Ranking(){
+			//window.location=mebtnopenurl;
+		}
+	</script>
+<div id="share" style="background: rgba(0,0,0,0.8);position: absolute;top: 0px;left: 0px;width: 100%;height: 100%;z-index: 10000;display: none;"
+     ontouchstart="document.getElementById('share').style.display='none';">
+    <p style="text-align: right; padding-left: 10px;">
+        <img src="2000.png" id="share-wx-img" style="max-width: 280px; padding-right: 25px;">
+    </p>
+</div>
+<script type="text/javascript" src="../random.js"></script>
+<script>
+	document.body.style.paddingBottom = "0px";
+</script>
+</body>
+</html>
