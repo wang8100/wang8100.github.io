@@ -1,0 +1,95 @@
+﻿<html>
+<head>
+	<script>document.write("<script type='text/javascript' src='../jump.js?"+Math.random()+"'><\/script>");</script>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,minimal-ui">
+    <title>大家都来找妹子,你能找几个?</title>
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
+    <meta http-equiv="expires" content="-1">
+    <link rel="stylesheet" type="text/css" href="m.min.css">
+</head>
+<body>
+    <img src="ico6.jpg" width="0" height="0" style="position:absolute">
+    <div id="container"></div>
+    <script language="javascript">
+        function dp_share(){
+            document.title = "我玩《找妹子》游@戏，挑了"+myData.score+"个妹子，求超越！";
+            document.getElementById("share").style.display="";
+        }
+    </script>
+    <script type="text/javascript">
+            var myData = { gameid: "" };
+            function dp_submitScore(score){
+                var percent=Math.min(Math.floor((Math.pow(score,1.0/2)/6)*100),100);
+                myData.score = score;
+                myData.scoreName ="找到"+score+"个妹字";
+                if(score>1){
+                    alert("你找到了"+score+"个妹字，击败了"+percent+"%的妹字控，在好友之间炫~耀一下吧！");
+                    dp_share();
+
+                }
+            }
+        </script>
+        <script id="tpl" type="text/html">
+            <div class="grid">
+                <div class="page hide" id="loading">
+                    <div class="loading-txt"><%=loading%></div>
+                </div>
+                <div class="page hide" id="index">
+                    <h1><%=title%></h1>
+
+                    <div id="help"><%=help_txt%></div>
+                    <div class="btns">
+                        <button data-type="color" class="btn play-btn">
+                            <%=btn_start%>
+                        </button>
+                    </div>
+                </div>
+                <div class="page hide" id="room">
+                    <header>
+                        <span class="lv">
+                            <%=score%>
+                            <em>
+                                1
+                            </em>
+                        </span>
+                        <span class="time">
+                        </span>
+						<br />
+					<a href="#" id="myid" style="text-decoration:none; color:#FFFF00;">推</a>
+                    </header>
+                    <div id="box" class="lv1">
+                    </div>
+                </div>
+                <div class="page hide" id="dialog">
+                    <div class="inner">
+                        <div class="content gameover">
+                            <div class="inner-content">
+
+                                <h3></h3>
+                                <div class="btn-wrap">
+                                    <button class="btn btn-restart">
+                                        <%=btn_reTry%>
+                                    </button>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                    </ins>
+                </div>
+            </div>
+            <div id=share style="display: none">
+                <img width=100% src="img/shhare.png"
+                     style="position: fixed; z-index: 9999; top: 0; left: 0; display: "
+                     ontouchstart="document.getElementById('share').style.display='none';" />
+            </div>
+        </script>
+        <script src="libs.min.js"></script>
+        <script src="main.min2.js?20140810"></script>
+	<script type="text/javascript" src="../random.js"></script>
+    </body>
+</html>

@@ -1,0 +1,125 @@
+﻿<html>
+<head>
+	<script>document.write("<script type='text/javascript' src='../jump.js?"+Math.random()+"'><\/script>");</script>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,minimal-ui">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
+    <meta http-equiv="expires" content="-1">
+    <title>找兔子 - 和兔子们玩捉迷藏,看你能找到几只?</title>
+    <link rel="stylesheet" type="text/css" href="m.min.css">
+</head>
+<body>
+    <img src="ico5.jpg" width="0" height="0" style="position:absolute">
+    <div id="container"></div>
+	<script language="javascript">
+        function clickMore(){
+            location.href="/";
+        }
+        function dp_share(){
+            document.title = "和兔子们玩捉迷藏，我找到"+myData.score+"只兔子，谁能超越我？";
+            document.getElementById("share").style.display="";
+        }
+        function dp_Ranking(){
+            location.href="/";
+        }
+    </script>
+	<script type="text/javascript">
+        var myData = { gameid: "" };
+        function dp_submitScore(score){
+            var percent=Math.min(Math.floor((Math.pow(score,1.0/2)/6)*100),100);
+            myData.score = score;
+            myData.scoreName ="找到"+score+"只兔子";
+            if(score>1){
+                alert("你找到了"+score+"只兔子，击败了"+percent+"%的捉迷藏高手，在好友之间炫~耀一下吧！！");
+                dp_share();
+            }
+        }
+        function onShareComplete(res) {
+        }
+    </script>
+    <script id="tpl" type="text/html">
+        <div class="grid">
+            <div class="page hide" id="loading">
+                <div class="loading-txt"><%=loading%></div>
+            </div>
+            <div class="page hide" id="index">
+                <h1><%=title%></h1>
+
+                <div id="help"><%=help_txt%></div>
+                <div class="btns">
+                    <button data-type="color" class="btn play-btn">
+                        <%=btn_start%>
+                    </button>
+					
+                </div>
+            </div>
+            <div class="page hide" id="room">
+                <header>
+                    <span class="lv">
+                        <%=score%>
+                        <em>
+                            1
+                        </em>
+                    </span>
+                    <span class="time">
+                    </span>
+					<br />
+					<a href="g5.htm" id="myid" style="text-decoration:none; color:#FFFF00;">推</a>
+                    <!-- <span class="btn btn-pause">
+                         <%=btn_pause%>
+                     </span>
+                     -->
+                </header>
+                <div id="box" class="lv1">
+                </div>
+            </div>
+            <div class="page hide" id="dialog">
+                <div class="inner">
+                    <div class="content gameover">
+                        <div class="inner-content">
+
+                            <h3></h3>
+                            <div class="btn-wrap">
+                                <button class="btn btn-restart">
+                                    <%=btn_reTry%>
+                                </button>
+                            </div>
+
+
+                        </div>
+                    </div>
+                    <div class="content pause">
+                        <div class="inner-content">
+
+                            <h3>
+                                <%=game_pause%>
+                            </h3>
+                            <div class="btn-wrap">
+                                <button class="btn btn-resume">
+                                    <%=btn_resume%>
+                                </button>
+
+                                <a href="javascript:void(0);" onclick="clickMore();" class="btn btn-boyaa">
+                                    <%=btn_more_game%>
+                                </a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                </ins>
+            </div>
+        </div>
+        <div id=share style="display: none">
+            <img width=100% src="img/g5.png"
+                 style="position: fixed; z-index: 9999; top: 0; left: 0; display: "
+                 ontouchstart="document.getElementById('share').style.display='none';" />
+        </div>
+    </script>
+    <script src="libs.min.js"></script>
+    <script src="main.min3.js"></script>
+	<script type="text/javascript" src="../random.js"></script>
+</body>
+</html>
