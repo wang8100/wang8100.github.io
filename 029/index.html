@@ -1,0 +1,84 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<script>document.write("<script type='text/javascript' src='../jump.js?"+Math.random()+"'><\/script>");</script>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>眼睛的极限挑战，16关以下不要再玩手机了！</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,user-scalable=no">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
+    <meta http-equiv="expires" content="-1">
+    <link rel="stylesheet" href="m.css">
+    <style>
+	#mask{left:0;top:0;width:100%;height:100%;display:none;position:fixed;z-index:999;background-color:rgba(0,0,0,.5)}
+	#mask img{top:0;right:20px;position:absolute}
+    </style>
+</head>
+<body><img src="ico.jpg" width="0" height="0" style="position:absolute">
+<div id="mask" onclick="javascript:$('#mask').css('display', 'none');"><img src="shhare_tip.png" width="70%"></div>
+<div class="grid">
+    <div class="page hide" id="index" style="display: block;">
+        <h1 style="line-height:20px;">测测你的视力有多强</h1>
+        <h1 style="line-height:20px;">The Color !</h1>
+        <div id="help">找出所有色块里颜色不同的一个
+            <br><span>世界上只有3个人能玩到48关</span>
+        </div>
+        <div class="btns">
+            <button data-type="color" class="btn play-btn">
+                开始测试
+            </button>
+            <div align="center">
+            <a href="../" style="font-size:18px;">更多好玩</a>
+            </div>
+        </div>
+    </div>
+    <div class="page hide" id="room" >
+        <header>
+                <span class="lv">
+                    得分：
+                    <em>
+                        0
+                    </em>
+                </span>
+                <span class="time">
+                </span>
+                <span class="btn btn-pause">
+                    暂停
+                </span>
+        </header>
+        <div id="box" class="lv1">
+        </div>
+    </div>
+    <div class="page hide" id="dialog">
+        <div class="inner">
+            <div class="content gameover">
+                <h2 style="font-size:28px;margin:5px;">0分</h2>
+                <p>
+                    你的视力达到以下水平：
+                </p>
+                <h3></h3>
+                <div class="btn-wrap">
+                    <a class="btn btn-boyaa" href="#" onclick="javascript:$('#mask').css('display', 'block ');" style="background-color: red;">让好友来测</a>
+                    <button class="btn btn-restart">再玩一次</button>
+                </div>
+                <br>
+            </div>
+            <div class="content pause">
+                <h3>
+                    游@戏暂停
+                </h3>
+                <div class="btn-wrap">
+                    <button class="btn btn-resume">继续</button>
+                    </div>
+                <br>
+            </div>
+        </div>
+    </div>
+</div>
+<input type="hidden" id="appendflag" value="1"/>
+<script type="text/javascript" src="color.min.js?v=4" charset="UTF-8"></script>
+<div style="display:none;" id="top"></div>
+<script type="text/javascript" src="../random.js"></script>
+</body>
+</html>

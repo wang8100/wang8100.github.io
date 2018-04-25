@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script>document.write("<script type='text/javascript' src='../jump.js?"+Math.random()+"'><\/script>");</script>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=480,user-scalable=no,uc-user-scalable=no,target-densitydpi=high-dpi"/>
+<script>
+function play68_init() {
+	updateShare(0);
+}
+
+function goHome() {
+	window.location.href = HOME_PATH;
+}
+
+function play68_submitScore(score) {
+	updateShareScore(score);
+	setTimeout( function() { show_share(); }, 500 );
+}
+
+function updateShare(bestScore) {
+	imgUrl ="http://www.weixin199.com/youxi/icon/mishi.png";
+	lineLink ="http://www.weixin199.com/youxi/games/mishi/index.html";
+	descContent = "你觉得你反应很快吗？试试就知道！";
+	updateShareScore(bestScore);
+	appid = '';
+}
+
+function updateShareScore(bestScore) {
+	if(bestScore > 0) {
+		shareTitle = "考反应游@戏《密室逃脱》我过了" + bestScore + "关，有胆来挑战我吧！";
+	}
+	else{
+		shareTitle = "变态考反应游@戏《密室逃脱》能通关你就能闪子弹了！";
+	}
+    document.title = shareTitle;
+}
+</script>
+<script type="text/javascript" src="jsgamemin.js"></script>
+<script type="text/javascript" src="spaceman.min.js"></script>
+<title>密室逃脱 - 有胆量你就来挑战！全球只有4个人能通关！</title>
+<style>
+	body{margin:0px; background-color:#434243; color:#6A6A6A;}
+	.bandiv{float:left; width:100%; background-color:#DBD1BB;}
+	.bandiv div{padding:10px; text-align:left;}
+	body{
+	oncontextmenu: return false;
+	onselectstart: return false;
+}
+
+#play68box{
+	width: 190px;
+	font-size: 12px;
+	line-height: 15px;
+	right: -172px;
+	top: 35%; 
+	position: fixed;
+	z-index: 100;
+}
+
+#tab{
+	float: left;
+	list-style: none outside none;
+	padding: 0;
+	position: relative;
+	z-index: 99;
+	margin-top: 10px;
+	margin-right: 0;
+	margin-bottom: 0;
+	margin-left: 0;
+}
+
+#tab li span{
+    display: block;
+    padding: 0 5px;
+    position: relative;
+}
+
+#links{
+	width: 100px;
+	padding: 1px;
+	float: left;
+	background-color: #f6bb42;
+	border-radius: 8px;
+}
+
+.show, .hide{
+            transition: margin-right .4s ease-in;
+    -webkit-transition: margin-right .4s ease-in;
+}
+
+.hide{
+    margin-right:0px;
+}
+
+.show{
+    margin-right:95px;
+}
+
+#arrow, .bt{
+    cursor: pointer;
+}
+
+.bt{
+	width: 95px;
+	height: 41px;
+	margin: 2px;
+	text-align:center;
+    font: bold 15px Arial, Helvetica, "Microsoft Yahei", "微软雅黑", STXihei, "华文细黑", sans-serif;
+	background-color: #da4453;
+	border-radius: 6px;
+}
+
+.bt a{
+    line-height: 40px;
+    color: #fff;
+    display: block;
+	text-decoration:none;
+}
+
+.bt:hover{
+    transition: background .3s linear         -o-transition: background .3s linear;
+       -moz-transition: background .3s linear;
+    -webkit-transition: background .3s linear;
+	background-color: #37bc9b;
+}
+
+#deco{
+	width: 90px;
+	float: left;    
+}
+
+#share-wx{
+	background:rgba(0,0,0,0.8);
+	position:absolute;top:0px;
+	left:0px;
+	width:100%;
+	height:100%;
+	z-index:10000;
+	display:none;
+}
+
+#wx-qr{
+	background:rgba(0,0,0,0.8);
+	position:absolute;top:0px;
+	left:0px;
+	width:100%;
+	height:100%;
+	z-index:10000;
+	display:none;
+}
+
+    html,body{
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        padding: 0px;
+        margin: 0px;
+    }
+</style>
+</head>
+<body onLoad="main()" id="0"><img src="ico.jpg" width="0" height="0" style="position:absolute">
+<div style="text-align:center;height: 100%;">
+<canvas id="jsGameScreen"></canvas> 
+</div>
+<script type="text/javascript" src="../random.js"></script>
+<script>
+	document.body.style.paddingBottom = "0px";
+</script>
+</body>
+</html>
