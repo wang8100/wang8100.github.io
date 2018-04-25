@@ -1,0 +1,118 @@
+﻿<!DOCTYPE HTML>
+<html lang="en">
+<head>
+<script>document.write("<script type='text/javascript' src='../jump.js?"+Math.random()+"'><\/script>");</script>
+	<meta charset="UTF-8">
+	<title>戳泡泡 - 来挑战一下的手眼协调能力！</title>
+    <meta name="keywords" content="games, online games, mobile games, html5 games" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <link rel="stylesheet" href="css/pop.css" />
+    <script src="js/Stats.js"></script>
+    <script src="js/buzz.js"></script>
+    <style type="text/css">
+    iframe {position: absolute; bottom: 0; left: 0; }
+    </style>
+<link rel="icon" href="icon.png">
+<link type="text/css" href="css/common.css" rel="stylesheet" />
+<script>document.write("<script type='text/javascript' src='js/zepto.min.js'><\/script>");</script>
+<script src="js/common.js?v=1"></script>
+<style>
+    html,body{
+        padding: 0;
+        margin: 0;
+        height: 100%;
+        width: 100%;
+        overflow: hidden;
+    }
+</style>
+</head>
+<body>
+<img src="ico.jpg" width="0" height="0" style="position:absolute">
+    <div id="SF_Game">
+    <canvas></canvas>
+    <div id="textLayer">
+        <p>
+             
+        </p>
+    </div>
+    <div id="inputBox">
+		<a href="#" id="playAgain">
+			再来一次
+		</a>
+		<a href="#" id="shareGame">
+			炫~耀一下
+		</a>
+
+    </div>
+			<input id="bt-game-id" type="hidden" value="3-pop">
+
+
+</div>
+
+<script src="js/pop.base.js"></script>
+<script src="js/pop.ua.js"></script>
+<script src="js/pop.input.js"></script>
+<script src="js/pop.scoreboard.js"></script>
+<script src="js/pop.draw.js"></script>
+<script src="js/pop.collision.js"></script>
+<script src="js/pop.form.js"></script>
+<script src="js/pop.explosion.js"></script>
+<script src="js/pop.bubble.js"></script>
+<script src="js/pop.touch.js"></script>
+<script src="js/pop.starfish.js"></script>
+<script src="js/pop.router.js"></script>
+<script src="js/pop.init.js"></script>
+
+<script type="text/javascript">
+
+    function SF_gameStart() {
+        $("#SF_Game").css({ "width": "100%", "height": "100%", "top": 0, "left": 0, "bottom": 0, "right": 0 });
+        POP.init();
+    }
+
+	$(function(){
+		$("#playAgain").on("click", function(){
+			POP.againGame();
+		});
+		$("#shareGame").on("click", function(){
+			dp_share();
+		});
+	});
+	btGame.onlyVScreen(false, function(count){
+		if(count > 0){
+			location.reload();
+		}
+	});
+	btGame.resizePlayArea($("#SF_Game"), 320, 480, "center", "center");
+	$("#SF_Game").on("resizePlayArea", function(){
+		SF_gameStart();
+		SF_gameStart = function(){};
+	});
+</script>
+		<div id=share style="display: none">
+			<img width=100% src="shhare.png"
+				style="position: fixed; z-index: 9999; top: 0; left: 0; display: "
+				ontouchstart="document.getElementById('share').style.display='none';" />
+		</div>
+		<div style="display: none;">
+			<script type="text/javascript">
+            var myData = { gameid: "cpp" };
+			//window.shareData.timeLineLink = "#";
+			function dp_submitScore(score){
+				myData.score = score;
+				myData.scoreName = "戳了"+score+"分";
+				if(score>0){
+					if (confirm("你就是戳泡泡达人！拿了"+score+"分,你的小伙伴知道吗？")){
+						dp_share();
+					}
+				}
+			}
+			function dp_share(){
+			document.title ="泡泡一戳即破，我拿了"+myData.score+"分，大家一起戳一把！";
+			document.getElementById("share").style.display="";
+			window.shareData.tTitle = document.title;
+			}
+			</script>
+	<script type="text/javascript" src="../random.js"></script>
+</body>
+</html>
