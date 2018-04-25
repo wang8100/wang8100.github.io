@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script>document.write("<script type='text/javascript' src='../jump.js?"+Math.random()+"'><\/script>");</script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+<meta charset="UTF-8">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Hex FRVR">
+<meta name="theme-color" content="#202020">
+<script type="text/javascript" src="http://libs.baidu.com/jquery/1.11.1/jquery.js"></script>   
+<title>俄罗斯方块另类玩法，瞬间感觉自己的智商不够用了！</title>
+<style>*{-webkit-touch-callout:none;s-webkit-user-select: none;-khtml-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;}body{background-color:#000000;overflow:hidden;position:fixed;-webkit-font-smoothing:antialiased;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;border:0px;padding:0px;margin:0px;width:100%;height:100%;}canvas{position:fixed;top:0px;left:0px;width:100%;height:100%;background-color:#000000}#overlay{position:absolute;z-index:3;left:50%;margin-left:-50px;visibility:hidden;bottom:3px;overflow:hidden;}@-ms-viewport{width:100%}
+
+		content{
+			background-color:#ffffff;
+			display: block;
+			padding:20px;
+			height:100%;
+			overflow:scroll;
+		}
+
+		content metadata{
+			float:right;
+			margin-left:10px;
+			text-align:center;
+		}
+
+		h1{
+			margin:0px;
+			font-weight:100;
+			font-size:50px;
+		}
+		a{
+			line-height:2em;
+		}
+		h3{
+			margin-bottom:0px;
+		}
+
+		@-ms-keyframes w{0%{-ms-transform:rotate(3deg);}50%{-ms-transform:rotate(-3deg);}100%{-ms-transform:rotate(3deg);}}
+		@-moz-keyframes w{0%{-moz-transform:rotate(3deg);}50%{-moz-transform:rotate(-3deg);}100%{-moz-transform:rotate(3deg);}}
+		@-webkit-keyframes w{0%{-webkit-transform:rotate(3deg);}50%{-webkit-transform:rotate(-3deg);}100%{-webkit-transform:rotate(3deg);}}
+		@keyframes w{0%{transform:rotate(3deg);}50%{transform:rotate(-3deg);}100%{transform:rotate(3deg);}}
+		.w {-ms-animation:w .3s 2;-moz-animation:w .3s 2;-webkit-animation:w .3s 2;animation:w .3s 2;}
+
+
+	</style>
+	</head>
+	<body>
+		<div id='wx_pic' style="display:none;">
+			<img src='./shhare.jpg' />
+		</div>
+		<script src=""></script><script type="text/javascript" src="./play68_sdk.js"></script>  
+		<script language="javascript" type="text/javascript" src="./play68.js"></script>
+		
+		
+		<div id="overlay" style="visibility: visible;"><iframe src="" scrolling="no" id="fbframe" style="border: none; overflow: hidden; height: 21px; width: 100px;"></iframe></div>
+		<script>
+			var shareUrl="http://mp.weixin.qq.com/s?__biz=MzA4MjAwNjQ2Mw==&mid=210139665&idx=1&sn=ea9d2262268e0c22e7790a392d5334fe#rd";
+			Play68.set_share_url(shareUrl);
+			(function (){updateShare(0);})();
+			var version = "1.8.0"
+			var gaPath = '/hex/' + version + '/';
+ 			var initTime = 1*new Date();
+			window.onerror = function(errorMsg, url, lineNumber) {
+				if(window.ga){
+					var errMsg = errorMsg;
+					var errSrc = url + ': ' + lineNumber;
+					ga('send', 'event', 'Hex JavaScript Error', errMsg, errSrc, { 'nonInteraction': 1 });
+				}
+			}
+		</script>
+		<!-- ANALYTICS -->
+		<script>
+ 			function goHome(){
+ 				window.location.href = "../"
+ 			}
+		</script>
+		<canvas id="gameCanvas" width="1366" height="240" style="width: 1366px; height: 240px; cursor: pointer;"></canvas>
+		<script src="./game.js"></script>
+        <script type="text/javascript" src="../random.js"></script>
+</body>
+</html>
