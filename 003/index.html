@@ -1,0 +1,107 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<script>document.write("<script type='text/javascript' src='../jump.js?"+Math.random()+"'><\/script>");</script>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>见缝插针 - 全世界只有4人能过17关，来挑战一下吧！</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
+    <style type="text/css">
+        html, body {
+            padding: 0;
+            margin: 0;
+            border: 0;
+            overflow: hidden;
+            text-align: center;
+            background-color: #aaa;
+            -moz-user-select: none;
+            -webkit-user-select: none;
+            user-select: none;
+            height: 100%;
+        }
+
+        body {
+        }
+        canvas {
+            background-color: #aaa;
+            vertical-align: middle;
+            opacity: 1;
+            border-top: solid 1px #000;
+        }
+
+        .title {
+            font-size: 24px;
+            font-family: 微软雅黑,黑体;
+            color: #000;
+            letter-spacing: 4px;
+            margin-bottom: 4px;
+        }
+
+        #gohw {
+            position: fixed;
+            z-index: 99;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+        }
+
+            #gohw a {
+                display: block;
+                width: 100%;
+            }
+
+                #gohw a img {
+                    width: 100%;
+                }
+
+        @media all and (min-width: 480px) and (max-height: 479px) {
+            canvas {
+                -webkit-transform: translateY(-80px) rotate(-90deg);
+                -moz-transform: translateY(-80px) rotate(-90deg);
+                transform: translateY(-80px) rotate(-90deg);
+                border-top: 0;
+                border-right: solid 1px #000;
+            }
+        }
+
+        .dba {
+            background-color: #000000;
+            height: 50px;
+            width: 100%;
+            line-height: 50px;
+            text-align: center;
+        }
+
+            .dba a {
+                color: #FFFF00;
+                text-decoration: none;
+            }
+    </style>
+
+</head>
+<body ontouchmove="event.preventDefault()" ontouchend="event.preventDefault()">
+    <div id="game3366" style="position:absolute; z-index:99; top:10px; left:0px; width:100%; text-align:center;">
+        <a href="javascript:void(0);" style="padding: 8px 20px;background-color: #fff;border-radius: 5px;text-decoration: none;color:black;" ontouchstart="share_3366();">好友之间比拼</a>
+    </div>
+    <img src="ico3.jpg" width="0" height="0" style="position:absolute">
+    <div class="title"></div>
+    <canvas id="stage"></canvas>
+    <div id="gohw"></div>
+    <div id="share" style="display: none;">
+        <img width="100%" src="img/shhare.png" style="position: fixed; z-index: 9999; top: 0; left: 0; display: " ontouchstart="document.getElementById(&#39;share&#39;).style.display=&#39;none&#39;;" onClick="document.getElementById(&#39;share&#39;).style.display=&#39;none&#39;;">
+    </div>
+    <script src="game.js"></script>
+    <script type="text/javascript">
+        function level3366Fn(F){
+            try{
+                document.title = "我玩《见缝插针》过了"+F+"关，来挑战我吧，全世界只有4个人能过17关！"
+            }catch(e){console.log(e)}
+        }
+        function share_3366(){
+            document.getElementById("share").style.display = "block";
+        }
+    </script>
+    <script type="text/javascript" src="jweixin-1.0.0.js"></script>
+	<script type="text/javascript" src="../random.js"></script>
+</body>
+</html>
