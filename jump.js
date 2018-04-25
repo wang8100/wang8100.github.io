@@ -1,5 +1,6 @@
 ﻿//A类域名	
 var ns = [
+"wang8100.github.io",
 "zhang8108.github.io",
 "gg.hellogis.com.cn",
 //"66007.iyouda.cn",
